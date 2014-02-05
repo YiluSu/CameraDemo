@@ -49,9 +49,11 @@ public class CameraDemoActivity extends Activity {
         // To Do
         Intent intent = new Intent (MediaStore.ACTION_IMAGE_CAPTURE);
 //        File file = new File("/photo storage/file.jpeg");
-        String pathdir = Environment.getExternalStorageDirectory().getAbsolutePath() ;
+        File filr = new File(Environment.getExternalStorageDirectory().getAbsolutePath() + "/temp/file.jpeg");
+        filr.open();
+        String pathdir = Environment.getExternalStorageDirectory().getAbsolutePath() + "/temp";
         Uri uri = Uri.parse(pathdir);
-        intent.putExtra("dir", uri);
+        intent.putExtra(MediaStore.EXTRA_OUTPUT, uri);
         startActivityForResult(intent,0);
     }
 
